@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+		<script>
+				sap.ui.localResources("scancard");
+				var app = new sap.m.App({initialPage:"idscan1"});
+				var page = sap.ui.view({id:"idscan1", viewName:"scancard.scan", type:sap.ui.core.mvc.ViewType.XML});
+				app.addPage(page);
+				app.placeAt("content");
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<script>
+				var bodyID = document.getElementsByTagName("body")[0];         
+				var cordovaScript = document.createElement("script");
+				cordovaScript.type = "text/javascript";
+				cordovaScript.src = 'cordova/cordova.js';
+				bodyID.appendChild(cordovaScript);
+		</script>
+		<script type="text/javascript" src="cordova/js/index.js"></script>
+		<script type="text/javascript">
+			app.initialize();
+		</script>
+		
+		<div id="content"></div>
+	</body>
+</html>
